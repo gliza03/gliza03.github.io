@@ -485,7 +485,7 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
       <h2 style="margin-top:16px">Let's <span class="grad">connect.</span></h2>
       <p>I'm graduating in December 2026 and looking for full-time roles in software, data, customer success, or technical strategy. I'd love to hear from you.</p>
       <div class="cta-row">
-        <div class="mail"><span id="email">gliza@byu.edu</span><button type="button" class="btn solid" id="copy">Copy email</button></div>
+        <div class="mail"><span id="email">gabrielliza012@gmail.com</span><button type="button" class="btn solid" id="copy">Copy email</button></div>
         <a class="btn" href="https://www.linkedin.com/in/gabriellizam" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
       </div>
     </div>
@@ -544,7 +544,7 @@ const btn = document.getElementById("copy");
 btn.addEventListener("click", () => {
   const ok = () => { btn.textContent = "Copied"; setTimeout(() => (btn.textContent = "Copy email"), 1800); };
   const sel = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById("email")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Press Ctrl+C"; };
-  try { navigator.clipboard.writeText("gliza@byu.edu").then(ok, sel); } catch (e) { sel(); }
+  try { navigator.clipboard.writeText("gabrielliza012@gmail.com").then(ok, sel); } catch (e) { sel(); }
 });
 
 document.getElementById("yr").textContent = new Date().getFullYear();
