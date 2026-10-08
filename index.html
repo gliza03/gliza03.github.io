@@ -80,7 +80,7 @@ p { margin: 0; }
 .pill { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 10px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--surface); font-size: 13px; color: var(--muted); }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 var(--green); animation: ping 2.4s infinite; }
 @keyframes ping { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 60%, transparent); } 80%, 100% { box-shadow: 0 0 0 8px transparent; } }
-.hero h1 { margin-top: 28px; font-size: clamp(44px, 8.4vw, 96px); font-weight: 800; line-height: .98; letter-spacing: -.045em; max-width: 13ch; }
+.hero h1 { margin-top: 28px; font-size: clamp(48px, 7.4vw, 88px); font-weight: 800; line-height: .98; letter-spacing: -.045em; max-width: 13ch; }
 .grad { background: linear-gradient(100deg, var(--green), var(--blue)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero .sub { margin-top: 26px; font-size: clamp(17px, 1.6vw, 19px); color: var(--muted); max-width: 54ch; }
 .hero .sub b { color: var(--text); font-weight: 600; }
@@ -92,6 +92,16 @@ p { margin: 0; }
 .rise:nth-child(2) { animation-delay: .06s; } .rise:nth-child(3) { animation-delay: .12s; }
 .rise:nth-child(4) { animation-delay: .18s; } .rise:nth-child(5) { animation-delay: .24s; }
 @keyframes rise { from { transform: translateY(14px); opacity: .01; } }
+
+.hero-grid { display: grid; gap: 48px; align-items: center; }
+.hero-grid > div { min-width: 0; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.35fr 1fr; } }
+.photo { position: relative; margin: 0; justify-self: center; width: min(400px, 100%); aspect-ratio: 1; max-width: 100%; border-radius: 28px; overflow: hidden; border: 1px solid var(--line-strong);
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,.9), 0 0 60px -20px color-mix(in srgb, var(--blue) 40%, transparent); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.photo:hover { transform: translateY(-4px) rotate(-.6deg); box-shadow: 0 30px 80px -30px rgba(0,0,0,.9), 0 0 70px -16px color-mix(in srgb, var(--green) 45%, transparent); }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo figcaption { position: absolute; left: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line-strong); }
 
 /* ---------- Sections ---------- */
 .section { padding-block: 112px 0; }
@@ -230,9 +240,10 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
   <div class="wrap nav-inner">
     <a href="#top" class="brand"><span class="mark">GL</span>Gabriel Liza</a>
     <nav class="links" aria-label="Sections">
-      <a href="#profile">Profile</a>
+      <a href="#profile">About</a>
       <a href="#experience">Experience</a>
-      <a href="#work">Work</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#work">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="btn solid sm" href="#contact">Let's talk</a>
@@ -243,13 +254,18 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="wrap">
-      <span class="pill rise"><span class="dot"></span>Open to full-time roles · 2027 start</span>
-      <h1 class="rise">Software, data &amp; AI that <span class="grad">move the business.</span></h1>
-      <p class="sub rise">I'm Gabriel, a developer at Melaleuca and an Information Systems student at BYU. I build the dashboards, automation, and ML apps, then <b>pitch them until leadership says yes</b>.</p>
+     <div class="hero-grid">
+     <div>
+      <span class="pill rise"><span class="dot"></span>Open to full-time roles starting in 2027</span>
+      <h1 class="rise">Hi, I'm <span class="grad">Gabriel.</span></h1>
+      <p class="sub rise">I'm a software developer at Melaleuca and an Information Systems student at BYU, graduating in December 2026. I enjoy building dashboards and automation that save people time, and I care just as much about the <b>people I work with</b> as the code I write.</p>
       <div class="cta-row rise">
-        <a class="btn solid" href="#work">See my work <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn solid" href="#work">View my projects <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         <a class="btn" href="#contact">Get in touch</a>
       </div>
+     </div>
+     <figure class="photo rise"><img src="headshot.jpg" alt="Portrait of Gabriel Liza" width="924" height="924"><figcaption><span class="dot"></span>Provo, Utah</figcaption></figure>
+     </div>
       <div class="proof rise">
         <span class="label">Experience at</span>
         <span>Melaleuca</span>
@@ -263,10 +279,10 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
   <section class="section wrap" id="profile">
     <div class="sec-head">
       <div>
-        <span class="label">Profile</span>
-        <h2>The short version.</h2>
+        <span class="label">About</span>
+        <h2>A bit about my work.</h2>
       </div>
-      <p>Three roles, one pattern: find the slow, manual thing and replace it with something measurable.</p>
+      <p>I've worked as a business analyst, a QA engineer, and now a developer. In each role I looked for slow, manual work and found a way to automate it.</p>
     </div>
 
     <div class="bento">
@@ -277,23 +293,23 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
         </div>
         <div>
           <h3>IT Software Developer at Melaleuca: The Wellness Company</h3>
-          <p class="muted" style="margin-top:10px">Testing analytics and automation across 11 global suites.</p>
+          <p class="muted" style="margin-top:10px">I work on test automation and reporting for 11 testing suites used by teams around the world.</p>
         </div>
         <ul class="wins">
-          <li><strong>40%</strong><span>shorter testing cycles from 5+ automation initiatives I pitched and won</span></li>
-          <li><strong>35%</strong><span>faster defect resolution from Power BI dashboards for leadership</span></li>
-          <li><strong>25%</strong><span>more automation coverage after unifying suites in a department merger</span></li>
+          <li><strong>40%</strong><span>shorter testing cycles after leadership approved 5+ automation projects I proposed</span></li>
+          <li><strong>35%</strong><span>faster bug resolution using Power BI dashboards I built for leadership</span></li>
+          <li><strong>25%</strong><span>more automation coverage after combining test suites during a department merger</span></li>
         </ul>
       </article>
 
       <article class="card b-stat">
         <span class="label">Users served</span>
-        <div><div class="big g">150k+</div><p class="muted" style="margin-top:10px">people a year on a registration system my four-person QA team tested</p></div>
+        <div><div class="big g">150k+</div><p class="muted" style="margin-top:10px">people a year use the registration system my four-person QA team tested</p></div>
       </article>
 
       <article class="card b-stat">
         <span class="label">Time saved</span>
-        <div><div class="big b">20+ hrs</div><p class="muted" style="margin-top:10px">every month by automating billing for 400+ educators</p></div>
+        <div><div class="big b">20+ hrs</div><p class="muted" style="margin-top:10px">saved each month by automating billing for 400+ educators</p></div>
       </article>
 
       <article class="card b-third">
@@ -306,14 +322,13 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
       <article class="card b-third">
         <span class="label">Leadership</span>
         <h3>President, Marriott Inclusion &amp; Belonging Society</h3>
-        <p class="muted">Building belonging across a 2,000-student business school through corporate partnerships and campus programming.</p>
+        <p class="muted">I lead a student organization that helps students across our 2,000-student business school feel they belong, through corporate partnerships and campus events.</p>
       </article>
 
       <article class="card b-third">
         <span class="label">Recognition</span>
         <h3>True-Blue Award</h3>
-        <p class="muted">For outstanding work performance and leadership.</p>
-        <div class="chip-row"><span class="chip">Agile advocate</span><span class="chip">Team lead</span></div>
+        <p class="muted">Awarded for outstanding work performance and leadership.</p>
       </article>
 
       <article class="card b-stack">
@@ -328,25 +343,63 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
     <div class="sec-head">
       <div>
         <span class="label">Experience</span>
-        <h2>Where I've shipped.</h2>
+        <h2>Where I've worked.</h2>
       </div>
-      <p>Business analyst, then QA lead, then developer. Each role was closer to the code and the decisions.</p>
+      <p>Each role brought me a little closer to the technology and the decisions behind it.</p>
     </div>
     <div class="xp">
       <div class="xp-row">
         <div class="xp-when">May 2025 – Now</div>
         <div class="xp-role"><h3>IT Software Developer</h3><p>Melaleuca · Provo, UT</p></div>
-        <p class="xp-what">Pitched 5+ automation initiatives with data-driven storytelling and won approval, <b>cutting testing cycles 40%</b>. Built Power BI dashboards that cut defect resolution time 35%.</p>
+        <p class="xp-what">I proposed 5+ automation projects backed by testing data, and after leadership approved them our <b>testing cycles got 40% shorter</b>. I also built Power BI dashboards that helped teams resolve bugs 35% faster.</p>
       </div>
       <div class="xp-row">
         <div class="xp-when">Jan 2024 – May 2025</div>
         <div class="xp-role"><h3>Student QA Engineer</h3><p>BYU Continuing Education (IT)</p></div>
-        <p class="xp-what">Led a four-person automation team on a system with <b>150k+ annual users</b>, lifting error detection 20% and halving test execution time across 20+ departments.</p>
+        <p class="xp-what">I led a four-person automation team testing a registration system with <b>150k+ users a year</b>. We caught 20% more errors and cut test run time in half, supporting 20+ departments.</p>
       </div>
       <div class="xp-row">
         <div class="xp-when">Nov 2022 – Dec 2023</div>
         <div class="xp-role"><h3>Student Business Analyst</h3><p>BYU Continuing Education (Business &amp; HR)</p></div>
-        <p class="xp-what">Automated billing with VBA, SQL, and Tableau, <b>saving 20+ hours a month</b>. Aligned PeopleSoft and Orion with HR and finance across 7 departments, and brought in Agile for a 33% efficiency gain.</p>
+        <p class="xp-what">I automated billing for 400+ educators with VBA, SQL, and Tableau, <b>saving 20+ hours a month</b>. I also worked with HR and finance across 7 departments to keep PeopleSoft and Orion in sync, and introduced Agile practices that made our workflow 33% more efficient.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LEADERSHIP & SERVICE ================= -->
+  <section class="section wrap" id="leadership">
+    <div class="sec-head">
+      <div>
+        <span class="label">Leadership &amp; service</span>
+        <h2>Beyond the classroom.</h2>
+      </div>
+      <p>The communities I've been part of at BYU, and the people I've had the chance to serve.</p>
+    </div>
+    <div class="xp">
+      <div class="xp-row">
+        <div class="xp-when">Current</div>
+        <div class="xp-role"><h3>President</h3><p>Marriott Inclusion &amp; Belonging Society</p></div>
+        <p class="xp-what">I lead the society's work to help every student in the Marriott School feel they belong, through partnerships with companies and events open to the whole business school.</p>
+      </div>
+      <div class="xp-row">
+        <div class="xp-when">2024 – 2025</div>
+        <div class="xp-role"><h3>VP of Learning Development</h3><p>Marriott Inclusion &amp; Belonging Society</p></div>
+        <p class="xp-what">I planned the society's learning and development programming before stepping into the president role.</p>
+      </div>
+      <div class="xp-row">
+        <div class="xp-when">2023 – 2025</div>
+        <div class="xp-role"><h3>Treasurer</h3><p>Catholic Newman Club at BYU</p></div>
+        <p class="xp-what">I managed the club's budget and finances, helping Catholic students find community on campus.</p>
+      </div>
+      <div class="xp-row">
+        <div class="xp-when">BYU</div>
+        <div class="xp-role"><h3>Representative, Students of Other Faiths</h3><p>BYU Student Advisory Council</p></div>
+        <p class="xp-what">I represent students of other faiths on the council, sharing their experiences and feedback with university leaders.</p>
+      </div>
+      <div class="xp-row">
+        <div class="xp-when">Volunteer</div>
+        <div class="xp-role"><h3>Volunteer Teacher</h3><p>Classes for newcomer children</p></div>
+        <p class="xp-what">I taught classes for children who had recently moved to the United States and were still learning English. I helped them catch up in their school subjects while building their English along the way.</p>
       </div>
     </div>
   </section>
@@ -355,10 +408,10 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
   <section class="section wrap" id="work">
     <div class="sec-head">
       <div>
-        <span class="label">Selected work</span>
-        <h2>Things I've built.</h2>
+        <span class="label">Projects</span>
+        <h2>Selected projects.</h2>
       </div>
-      <p>Full-stack apps, a recommendation engine, and analytics people actually use.</p>
+      <p>A few things I've built in class and at work.</p>
     </div>
 
     <div class="work">
@@ -374,7 +427,7 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
         <div class="body">
           <div class="top"><span class="label">Dec 2024 · Full-stack + ML</span><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
           <h3>Personalized Movie Streaming Platform</h3>
-          <p class="muted">A streaming app with secure sign-in, role-based access, and a hybrid recommendation engine that blends collaborative and content-based filtering.</p>
+          <p class="muted">A full-stack streaming app with secure sign-in and role-based access. I also built its recommendation engine, which suggests movies based on both viewing history and movie details.</p>
           <div class="chip-row"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">.NET 8</span><span class="chip">scikit-learn</span><span class="chip">Azure ML</span></div>
         </div>
       </article>
@@ -390,7 +443,7 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
         <div class="body">
           <div class="top"><span class="label">Apr 2025 · Data + Cloud</span><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
           <h3>The Turtle Shelter Project</h3>
-          <p class="muted">A PostgreSQL database and admin web app on AWS that tracks homeless population metrics, volunteers, and events, with Tableau dashboards on top.</p>
+          <p class="muted">A database and web app on AWS that tracks homeless population data, volunteers, and events. I designed the database in under 45 hours and built Tableau dashboards on top of it.</p>
           <div class="chip-row"><span class="chip">PostgreSQL</span><span class="chip">AWS</span><span class="chip">Node.js</span><span class="chip">pandas</span><span class="chip">Tableau</span></div>
         </div>
       </article>
@@ -409,9 +462,9 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
           </div>
         </div></div>
         <div class="body">
-          <div class="top"><span class="label">2025 · Work case study</span><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
+          <div class="top"><span class="label">2025 · At work</span><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
           <h3>Global testing insights at Melaleuca</h3>
-          <p class="muted">Power BI dashboards tracking test performance across 11 global suites. The data became the pitch: it won approval for 5+ automation initiatives and cut testing cycles 40%.</p>
+          <p class="muted">Power BI dashboards that track test results across 11 global suites. I used them to make the case for 5+ automation projects, which cut testing cycles by 40%.</p>
           <div class="chip-row"><span class="chip">Power BI</span><span class="chip">Cypress</span><span class="chip">Selenium</span><span class="chip">Azure DevOps</span></div>
         </div>
       </article>
@@ -422,8 +475,8 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
   <section class="wrap" id="contact">
     <div class="cta">
       <span class="label">Contact</span>
-      <h2 style="margin-top:16px">Hiring for 2027? <span class="grad">Let's talk.</span></h2>
-      <p>I'm graduating in December 2026 and open to software, data and AI, customer success, and technical strategy roles.</p>
+      <h2 style="margin-top:16px">Let's <span class="grad">connect.</span></h2>
+      <p>I'm graduating in December 2026 and looking for full-time roles in software, data, customer success, or technical strategy. I'd love to hear from you.</p>
       <div class="cta-row">
         <div class="mail"><span id="email">gliza@byu.edu</span><button type="button" class="btn solid" id="copy">Copy email</button></div>
         <a class="btn" href="https://www.linkedin.com/in/gabriellizam" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
@@ -443,7 +496,7 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
 // Add your GitHub and Kaggle URLs here; empty ones show as "soon".
 const LINKS = {
   LinkedIn: "https://www.linkedin.com/in/gabriellizam",
-  GitHub: "",
+  GitHub: "https://github.com/gliza03",
   Kaggle: "",
 };
 
