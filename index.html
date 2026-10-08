@@ -211,6 +211,23 @@ p { margin: 0; }
 .suites i { aspect-ratio: 1; border-radius: 5px; background: color-mix(in srgb, var(--green) 30%, var(--surface)); border: 1px solid color-mix(in srgb, var(--green) 40%, transparent); }
 .suites i:nth-child(3n) { background: color-mix(in srgb, var(--blue) 30%, var(--surface)); border-color: color-mix(in srgb, var(--blue) 40%, transparent); }
 
+/* Real screenshots in a floating browser window */
+.visual.framed { padding: 22px 22px 0; display: flex; align-items: flex-end;
+  background:
+    radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--tint) 26%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--surface-2), var(--surface)); }
+.window { position: relative; width: 100%; height: 100%; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid var(--line-strong); border-bottom: 0; background: var(--surface);
+  box-shadow: 0 -2px 0 color-mix(in srgb, var(--tint) 30%, transparent) inset, 0 24px 48px -20px rgba(0,0,0,.85);
+  transform: translateY(10px); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.proj:hover .window { transform: translateY(0) scale(1.015); box-shadow: 0 24px 60px -18px color-mix(in srgb, var(--tint) 35%, rgba(0,0,0,.9)); }
+.window .chrome { background: color-mix(in srgb, var(--surface) 92%, var(--tint)); }
+.window .chrome i:nth-child(1) { background: #ff9b8f; }
+.window .chrome i:nth-child(2) { background: #f9d77e; }
+.window .chrome i:nth-child(3) { background: #a8f0c6; }
+.window .chrome em { margin-left: auto; margin-right: auto; padding: 4px 12px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); transform: translateX(-21px); }
+.window img { position: absolute; top: 30px; left: 0; width: 100%; height: calc(100% - 30px); object-fit: cover; display: block; transition: transform .7s var(--ease); }
+.proj:hover .window img { transform: scale(1.03); }
+
 /* ---------- CTA ---------- */
 .cta { position: relative; margin-top: 112px; padding: clamp(36px, 7vw, 88px) clamp(22px, 6vw, 72px); border: 1px solid var(--line); border-radius: 28px; overflow: hidden; isolation: isolate; text-align: left;
   background: radial-gradient(520px 300px at 100% 0%, color-mix(in srgb, var(--blue) 16%, transparent), transparent 70%), radial-gradient(520px 300px at 0% 100%, color-mix(in srgb, var(--green) 14%, transparent), transparent 70%), var(--surface); }
@@ -257,7 +274,7 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
      <div class="hero-grid">
      <div>
       <span class="pill rise"><span class="dot"></span>Open to full-time roles starting in January 2027</span>
-      <h1 class="rise">Hi, I'm <span class="grad">Gabriel.</span></h1>
+      <h1 class="rise">Hey, I'm <span class="grad">Gabriel.</span></h1>
       <p class="sub rise">I'm a software developer at Melaleuca and an Information Systems student at BYU, graduating in December 2026. I enjoy building dashboards and automation that save people time, and I care just as much about the <b>people I work with</b> as the code I write.</p>
       <div class="cta-row rise">
         <a class="btn solid" href="#work">View my projects <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -269,7 +286,7 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
       <div class="proof rise">
         <span class="label">Experience at</span>
         <span>Melaleuca</span>
-        <span>Swimage</span>
+        <span>Swimage Inc.</span>
         <span>BYU Continuing Education</span>
       </div>
     </div>
@@ -357,12 +374,12 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
       </div>
       <div class="xp-row">
         <div class="xp-when">Jan 2024 – May 2025</div>
-        <div class="xp-role"><h3>Student QA Engineer</h3><p>BYU Continuing Education (IT)</p></div>
+        <div class="xp-role"><h3>Student QA Engineer</h3><p>BYU Continuing Education</p></div>
         <p class="xp-what">I led a four-person automation team testing a registration system with <b>150k+ users a year</b>. We caught 20% more errors and cut test run time in half, supporting 20+ departments.</p>
       </div>
       <div class="xp-row">
         <div class="xp-when">Sep 2023 – Dec 2023</div>
-        <div class="xp-role"><h3>Tech Consultant Intern</h3><p>Swimage Inc · On-campus</p></div>
+        <div class="xp-role"><h3>Tech Consultant Intern</h3><p>Swimage Inc. · On-campus</p></div>
         <p class="xp-what">I designed an automated testing plan for cybersecurity software that <b>cut 15+ hours of manual testing</b>. I also wrote 40+ test cases and a testing strategy covering 100+ use cases, which helped us find critical bugs and improve reliability by 20%.</p>
       </div>
       <div class="xp-row">
@@ -423,14 +440,12 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
 
     <div class="work">
       <article class="card proj">
-        <div class="visual"><div class="zoom">
-          <div class="chrome"><i></i><i></i><i></i><em>stream.app / for-you</em></div>
-          <div class="mv">
-            <div class="hl"><span>Recommended for you</span></div>
-            <div class="row-l">Because you watched…</div>
-            <div class="posters"><b></b><b></b><b></b><b></b><b></b></div>
+        <div class="visual framed" style="--tint: var(--blue)">
+          <div class="window">
+            <div class="chrome"><i></i><i></i><i></i><em>CineNiche</em></div>
+            <img src="cineniche.jpg" alt="CineNiche app showing personalized drama recommendations, a genre filter, and a grid of movie posters" loading="lazy" style="object-position: center 40%">
           </div>
-        </div></div>
+        </div>
         <div class="body">
           <div class="top"><span class="label">Dec 2024 · Full-stack + ML</span><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
           <h3>Personalized Movie Streaming Platform</h3>
@@ -440,13 +455,12 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
       </article>
 
       <article class="card proj">
-        <div class="visual"><div class="zoom">
-          <div class="chrome"><i></i><i></i><i></i><em>turtle-shelter / admin</em></div>
-          <div class="db">
-            <div class="kpis"><div><small>VOLUNTEERS</small><strong>Tracked</strong></div><div><small>EVENTS</small><strong>Scheduled</strong></div><div><small>BUILD</small><strong>&lt;45 hrs</strong></div></div>
-            <div class="bars"><i style="height:42%"></i><i style="height:66%"></i><i style="height:51%"></i><i style="height:80%"></i><i style="height:60%"></i><i style="height:92%"></i><i style="height:72%"></i></div>
+        <div class="visual framed" style="--tint: var(--green)">
+          <div class="window">
+            <div class="chrome"><i></i><i></i><i></i><em>Turtle Shelter Project</em></div>
+            <img src="turtle-shelter.webp" alt="Turtle Shelter Project home page with the headline Join the Turtle Shelter Project today and buttons to request an event or volunteer" loading="lazy" style="object-position: top center">
           </div>
-        </div></div>
+        </div>
         <div class="body">
           <div class="top"><span class="label">Apr 2025 · Data + Cloud</span><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
           <h3>The Turtle Shelter Project</h3>
