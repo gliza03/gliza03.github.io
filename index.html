@@ -55,6 +55,12 @@ p { margin: 0; }
 .links a { font-size: 14px; color: var(--muted); padding: 7px 14px; border-radius: 999px; transition: color .2s, background .2s; }
 .links a:hover { color: var(--text); background: var(--surface-2); }
 @media (max-width: 820px) { .links { display: none; } }
+.nav-right { display: flex; align-items: center; gap: 8px; }
+.lang { display: flex; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+.lang button { font: 600 12px/1 var(--mono); letter-spacing: .06em; color: var(--muted); background: transparent; border: 0; padding: 8px 10px; border-radius: 999px; cursor: pointer; transition: color .2s, background .2s; }
+.lang button:hover { color: var(--text); }
+.lang button[aria-pressed="true"] { background: var(--text); color: var(--ink); }
+@media (max-width: 400px) { .brand .full { display: none; } }
 
 /* ---------- Buttons ---------- */
 .btn { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding-inline: 20px; border-radius: 999px; font: 600 15px/1 var(--body); border: 1px solid var(--line-strong); color: var(--text); background: transparent; cursor: pointer; transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s, border-color .25s; }
@@ -266,15 +272,21 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
 <body>
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a href="#top" class="brand"><span class="mark">GL</span>Gabriel Liza</a>
-    <nav class="links" aria-label="Sections">
-      <a href="#profile">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#work">Projects</a>
-      <a href="#contact">Contact</a>
+    <a href="#top" class="brand"><span class="mark">GL</span><span class="full">Gabriel Liza</span></a>
+    <nav data-i18n-aria="nav.aria" class="links" aria-label="Sections">
+      <a data-i18n="nav.about" href="#profile">About</a>
+      <a data-i18n="nav.exp" href="#experience">Experience</a>
+      <a data-i18n="nav.lead" href="#leadership">Leadership</a>
+      <a data-i18n="nav.work" href="#work">Projects</a>
+      <a data-i18n="nav.contact" href="#contact">Contact</a>
     </nav>
-    <a class="btn solid sm" href="#contact">Let's connect!</a>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="es" lang="es" aria-pressed="false">ES</button>
+      </div>
+      <a class="btn solid sm" href="#contact" data-i18n="nav.cta">Let's connect!</a>
+    </div>
   </div>
 </header>
 
@@ -284,18 +296,18 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
     <div class="wrap">
      <div class="hero-grid">
      <div>
-      <span class="pill rise"><span class="dot"></span>Open to full-time roles starting in January 2027</span>
-      <h1 class="rise">Hi, I'm <span class="grad">Gabriel.</span></h1>
-      <p class="sub rise">I'm a software developer at Melaleuca and an Information Systems student at BYU, graduating in December 2026. I enjoy building dashboards and automation that save people time, and I care just as much about the <b>people I work with</b> as the code I write.</p>
+      <span class="pill rise"><span class="dot"></span><span data-i18n="hero.pill">Open to full-time roles starting in January 2027</span></span>
+      <h1 data-i18n="hero.h1" class="rise">Hi, I'm <span class="grad">Gabriel.</span></h1>
+      <p data-i18n="hero.sub" class="sub rise">I'm a software developer at Melaleuca and an Information Systems student at BYU, graduating in December 2026. I enjoy building dashboards and automation that save people time, and I care just as much about the <b>people I work with</b> as the code I write.</p>
       <div class="cta-row rise">
-        <a class="btn solid" href="#work">View my projects <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a class="btn" href="#contact">Get in touch</a>
+        <a class="btn solid" href="#work"><span data-i18n="hero.view">View my projects</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a data-i18n="hero.touch" class="btn" href="#contact">Get in touch</a>
       </div>
      </div>
-     <figure class="photo rise"><img src="headshot.jpg" alt="Portrait of Gabriel Liza" width="924" height="924"><figcaption><span class="dot"></span>Provo, Utah</figcaption></figure>
+     <figure class="photo rise"><img data-i18n-alt="hero.alt" src="headshot.jpg" alt="Portrait of Gabriel Liza" width="924" height="924"><figcaption><span class="dot"></span>Provo, Utah</figcaption></figure>
      </div>
       <div class="proof rise">
-        <span class="label">Experience at</span>
+        <span data-i18n="hero.proof" class="label">Experience at</span>
         <span>Melaleuca</span>
         <span>BYU Continuing Education</span>
         <span>Swimage Inc.</span>
@@ -307,63 +319,63 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
   <section class="section wrap" id="profile">
     <div class="sec-head">
       <div>
-        <span class="label">About</span>
-        <h2>A bit about my work.</h2>
+        <span data-i18n="about.label" class="label">About</span>
+        <h2 data-i18n="about.h2">A bit about my work.</h2>
       </div>
-      <p>I've worked as a business analyst, a QA engineer, and now a developer. In each role I looked for slow, manual work and found a way to automate it.</p>
+      <p data-i18n="about.p">I've worked as a business analyst, a QA engineer, and now a developer. In each role I looked for slow, manual work and found a way to automate it.</p>
     </div>
 
     <div class="bento">
       <article class="card b-now">
         <div class="now-top">
-          <span class="live"><span class="dot"></span>Now</span>
-          <span class="label">May 2025 – Present</span>
+          <span class="live"><span class="dot"></span><span data-i18n="now.live">Now</span></span>
+          <span data-i18n="now.when" class="label">May 2025 – Present</span>
         </div>
         <div>
-          <h3>IT Software Developer (QA Automation) at Melaleuca: The Wellness Company</h3>
-          <p class="muted" style="margin-top:10px">I validate data integrity and system behavior across 23 production websites, and report what I find to leadership.</p>
+          <h3 data-i18n="now.h3">IT Software Developer (QA Automation) at Melaleuca: The Wellness Company</h3>
+          <p data-i18n="now.p" class="muted" style="margin-top:10px">I validate data integrity and system behavior across 23 production websites, and report what I find to leadership.</p>
         </div>
         <ul class="wins">
-          <li><strong>838+</strong><span>test cases I migrated to a standardized framework, expanding locales from 5 to 22</span></li>
-          <li><strong>~49→10</strong><span>hours of manual testing per release after I rebuilt our regression suites</span></li>
-          <li><strong>35%</strong><span>faster bug resolution after leadership approved 5+ automation projects I proposed</span></li>
+          <li><strong>838+</strong><span data-i18n="now.w1">test cases I migrated to a standardized framework, expanding locales from 5 to 22</span></li>
+          <li><strong>~49→10</strong><span data-i18n="now.w2">hours of manual testing per release after I rebuilt our regression suites</span></li>
+          <li><strong>35%</strong><span data-i18n="now.w3">faster bug resolution after leadership approved 5+ automation projects I proposed</span></li>
         </ul>
       </article>
 
       <article class="card b-stat">
-        <span class="label">Users served</span>
-        <div><div class="big g">150k+</div><p class="muted" style="margin-top:10px">people a year use the registration system my four-person QA team tested</p></div>
+        <span data-i18n="stat1.label" class="label">Users served</span>
+        <div><div class="big g" data-i18n="stat1.big">150k+</div><p data-i18n="stat1.p" class="muted" style="margin-top:10px">people a year use the registration system my four-person QA team tested</p></div>
       </article>
 
       <article class="card b-stat">
-        <span class="label">Time saved</span>
-        <div><div class="big b">20+ hrs</div><p class="muted" style="margin-top:10px">saved each month by automating billing for 400+ educators</p></div>
+        <span data-i18n="stat2.label" class="label">Time saved</span>
+        <div><div data-i18n="stat2.big" class="big b">20+ hrs</div><p data-i18n="stat2.p" class="muted" style="margin-top:10px">saved each month by automating billing for 400+ educators</p></div>
       </article>
 
       <article class="card b-third">
-        <span class="label">Education</span>
-        <h3>B.S. Information Systems, Math minor</h3>
-        <p class="muted">BYU Marriott School of Business · Dec 2026</p>
-        <p class="muted">Coursework: Database Systems, Enterprise App Development, Principles of Accounting</p>
-        <div class="chip-row"><span class="chip">Major GPA 3.84</span><span class="chip">Scholarship ’23 ’24 ’25 ’26</span><span class="chip">Spanish (native)</span><span class="chip">French (conversational)</span></div>
+        <span data-i18n="edu.label" class="label">Education</span>
+        <h3 data-i18n="edu.h3">B.S. Information Systems, Math minor</h3>
+        <p data-i18n="edu.school" class="muted">BYU Marriott School of Business · Dec 2026</p>
+        <p data-i18n="edu.course" class="muted">Coursework: Database Systems, Enterprise App Development, Principles of Accounting</p>
+        <div data-i18n="edu.chips" class="chip-row"><span class="chip">Major GPA 3.84</span><span class="chip">Scholarship ’23 ’24 ’25 ’26</span><span class="chip">Spanish (native)</span><span class="chip">French (conversational)</span></div>
       </article>
 
       <article class="card b-third">
-        <span class="label">Leadership</span>
-        <h3>President, Marriott Inclusion &amp; Belonging Society</h3>
-        <p class="muted">I lead a student organization that helps students across our 2,000-student business school feel they belong, through corporate partnerships and campus events.</p>
+        <span data-i18n="lead.label" class="label">Leadership</span>
+        <h3 data-i18n="lead.h3">Co-President, Marriott Inclusion &amp; Belonging Society</h3>
+        <p data-i18n="lead.p" class="muted">I lead a student organization that helps students across our 2,000-student business school feel they belong, through corporate partnerships and campus events.</p>
       </article>
 
       <article class="card b-third">
-        <span class="label">Recognition</span>
-        <h3>True-Blue Award</h3>
-        <p class="muted">Awarded for outstanding work performance and leadership.</p>
-        <h3 style="margin-top:10px;padding-top:16px;border-top:1px solid var(--line)">EY Risk Management Case Study</h3>
-        <p class="muted">Completed EY's case study on risk assessment and strategic decision-making.</p>
+        <span data-i18n="rec.label" class="label">Recognition</span>
+        <h3 data-i18n="rec.h3">True-Blue Award</h3>
+        <p data-i18n="rec.p" class="muted">Awarded for outstanding work performance and leadership.</p>
+        <h3 data-i18n="rec.h3b" style="margin-top:10px;padding-top:16px;border-top:1px solid var(--line)">EY Risk Management Case Study</h3>
+        <p data-i18n="rec.pb" class="muted">Completed EY's case study on risk assessment and strategic decision-making.</p>
       </article>
 
       <article class="card b-stack">
-        <span class="label">Toolkit</span>
+        <span data-i18n="tools.label" class="label">Toolkit</span>
         <div class="fade-x"><div class="marquee" id="marquee"></div></div>
       </article>
     </div>
@@ -373,31 +385,31 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
   <section class="section wrap" id="experience">
     <div class="sec-head">
       <div>
-        <span class="label">Experience</span>
-        <h2>Where I've worked.</h2>
+        <span data-i18n="exp.label" class="label">Experience</span>
+        <h2 data-i18n="exp.h2">Where I've worked.</h2>
       </div>
-      <p>Each role brought me a little closer to the technology and the decisions behind it.</p>
+      <p data-i18n="exp.p">Each role brought me a little closer to the technology and the decisions behind it.</p>
     </div>
     <div class="xp">
       <div class="xp-row">
-        <div class="xp-when">May 2025 – Now</div>
-        <div class="xp-role"><h3>IT Software Developer (QA Automation)</h3><p>Melaleuca · Provo, UT</p></div>
-        <p class="xp-what">I validate data integrity across <b>23 production websites</b> through API, backend, and UI testing with Postman and Splunk. I led the migration of 838+ test cases to a standardized framework, rebuilt our regression suites to cut manual testing from ~49 to 10 hours per release, and presented Power BI findings that won approval for 5+ automation projects and made bug resolution 35% faster.</p>
+        <div data-i18n="x1.when" class="xp-when">May 2025 – Now</div>
+        <div data-i18n="x1.role" class="xp-role"><h3>IT Software Developer (QA Automation)</h3><p>Melaleuca · Provo, UT</p></div>
+        <p data-i18n="x1.what" class="xp-what">I validate data integrity across <b>23 production websites</b> through API, backend, and UI testing with Postman and Splunk. I led the migration of 838+ test cases to a standardized framework, rebuilt our regression suites to cut manual testing from ~49 to 10 hours per release, and presented Power BI findings that won approval for 5+ automation projects and made bug resolution 35% faster.</p>
       </div>
       <div class="xp-row">
-        <div class="xp-when">Jan 2024 – May 2025</div>
-        <div class="xp-role"><h3>Student QA Engineer</h3><p>BYU Continuing Education</p></div>
-        <p class="xp-what">I ran daily SQL queries to check data consistency for a registration system with <b>150k+ enrollments a year</b>, and led a four-person team that improved 30+ Selenium tests, catching 20% more errors and cutting run time in half.</p>
+        <div data-i18n="x2.when" class="xp-when">Jan 2024 – May 2025</div>
+        <div data-i18n="x2.role" class="xp-role"><h3>Student QA Engineer</h3><p>BYU Continuing Education</p></div>
+        <p data-i18n="x2.what" class="xp-what">I ran daily SQL queries to check data consistency for a registration system with <b>150k+ enrollments a year</b>, and led a four-person team that improved 30+ Selenium tests, catching 20% more errors and cutting run time in half.</p>
       </div>
       <div class="xp-row">
-        <div class="xp-when">Sep 2023 – Dec 2023</div>
-        <div class="xp-role"><h3>Tech Consultant Intern</h3><p>Swimage Inc. · On-campus</p></div>
-        <p class="xp-what">I designed the testing strategy for cybersecurity software used by clients such as <b>NASA and the IRS</b>, building 100+ use cases and 40+ black-box test cases. I also automated the testing plan, cutting 15+ hours of manual testing and improving reliability by 20%.</p>
+        <div data-i18n="x3.when" class="xp-when">Sep 2023 – Dec 2023</div>
+        <div data-i18n="x3.role" class="xp-role"><h3>Tech Consultant Intern</h3><p>Swimage Inc. · On-campus</p></div>
+        <p data-i18n="x3.what" class="xp-what">I designed the testing strategy for cybersecurity software used by clients such as <b>NASA and the IRS</b>, building 100+ use cases and 40+ black-box test cases. I also automated the testing plan, cutting 15+ hours of manual testing and improving reliability by 20%.</p>
       </div>
       <div class="xp-row">
-        <div class="xp-when">Nov 2022 – Dec 2023</div>
-        <div class="xp-role"><h3>Student Business Analyst</h3><p>BYU Continuing Education (Business &amp; HR)</p></div>
-        <p class="xp-what">I automated billing for 400+ educators with VBA, SQL, and Tableau, <b>saving 20+ hours a month</b>. I also worked with HR and finance across 7 departments to keep PeopleSoft and Orion in sync, and introduced Agile practices that made our workflow 33% more efficient.</p>
+        <div data-i18n="x4.when" class="xp-when">Nov 2022 – Dec 2023</div>
+        <div data-i18n="x4.role" class="xp-role"><h3>Student Business Analyst</h3><p>BYU Continuing Education (Business &amp; HR)</p></div>
+        <p data-i18n="x4.what" class="xp-what">I automated billing for 400+ educators with VBA, SQL, and Tableau, <b>saving 20+ hours a month</b>. I also worked with HR and finance across 7 departments to keep PeopleSoft and Orion in sync, and introduced Agile practices that made our workflow 33% more efficient.</p>
       </div>
     </div>
   </section>
@@ -406,36 +418,36 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
   <section class="section wrap" id="leadership">
     <div class="sec-head">
       <div>
-        <span class="label">Leadership &amp; service</span>
-        <h2>Beyond the classroom.</h2>
+        <span data-i18n="ls.label" class="label">Leadership &amp; service</span>
+        <h2 data-i18n="ls.h2">Beyond the classroom.</h2>
       </div>
-      <p>The communities I've been part of at BYU, and the people I've had the chance to serve.</p>
+      <p data-i18n="ls.p">The communities I've been part of at BYU, and the people I've had the chance to serve.</p>
     </div>
     <div class="xp">
       <div class="xp-row">
         <div class="xp-when">2025 – 2026</div>
-        <div class="xp-role"><h3>Co-President</h3><p>Marriott Inclusion &amp; Belonging Society</p></div>
-        <p class="xp-what">I lead the society's work to help every student in the Marriott School feel they belong, through partnerships with companies and events open to the whole business school.</p>
+        <div data-i18n="l1.role" class="xp-role"><h3>Co-President</h3><p>Marriott Inclusion &amp; Belonging Society</p></div>
+        <p data-i18n="l1.what" class="xp-what">I lead the society's work to help every student in the Marriott School feel they belong, through partnerships with companies and events open to the whole business school.</p>
       </div>
       <div class="xp-row">
         <div class="xp-when">2024 – 2025</div>
-        <div class="xp-role"><h3>VP of Learning Development</h3><p>Marriott Inclusion &amp; Belonging Society</p></div>
-        <p class="xp-what">I organized educational workshops by reaching out to multinational companies and faculty, helping raise awareness of belonging across the business school.</p>
+        <div data-i18n="l2.role" class="xp-role"><h3>VP of Learning Development</h3><p>Marriott Inclusion &amp; Belonging Society</p></div>
+        <p data-i18n="l2.what" class="xp-what">I organized educational workshops by reaching out to multinational companies and faculty, helping raise awareness of belonging across the business school.</p>
       </div>
       <div class="xp-row">
         <div class="xp-when">2023 – 2025</div>
-        <div class="xp-role"><h3>Treasurer</h3><p>Catholic Newman Club at BYU</p></div>
-        <p class="xp-what">I managed the club's budget and finances, helping Catholic students find community on campus.</p>
+        <div data-i18n="l3.role" class="xp-role"><h3>Treasurer</h3><p>Catholic Newman Club at BYU</p></div>
+        <p data-i18n="l3.what" class="xp-what">I managed the club's budget and finances, helping Catholic students find community on campus.</p>
       </div>
       <div class="xp-row">
         <div class="xp-when">2023</div>
-        <div class="xp-role"><h3>Representative, Students of Other Faiths</h3><p>BYU Student Advisory Council</p></div>
-        <p class="xp-what">I conducted 5 campus-wide surveys and led a campaign to increase the visibility of minority students, which was recognized by the Dean.</p>
+        <div data-i18n="l4.role" class="xp-role"><h3>Representative, Students of Other Faiths</h3><p>BYU Student Advisory Council</p></div>
+        <p data-i18n="l4.what" class="xp-what">I conducted 5 campus-wide surveys and led a campaign to increase the visibility of minority students, which was recognized by the Dean.</p>
       </div>
       <div class="xp-row">
         <div class="xp-when">2024</div>
-        <div class="xp-role"><h3>Volunteer Teacher</h3><p>Classes for newcomer children</p></div>
-        <p class="xp-what">I taught classes for children who had recently moved to the United States and were still learning English. I helped them catch up in their school subjects while building their English along the way.</p>
+        <div data-i18n="l5.role" class="xp-role"><h3>Volunteer Teacher</h3><p>Classes for newcomer children</p></div>
+        <p data-i18n="l5.what" class="xp-what">I taught classes for children who had recently moved to the United States and were still learning English. I helped them catch up in their school subjects while building their English along the way.</p>
       </div>
     </div>
   </section>
@@ -444,10 +456,10 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
   <section class="section wrap" id="work">
     <div class="sec-head">
       <div>
-        <span class="label">Projects</span>
-        <h2>Selected projects.</h2>
+        <span data-i18n="work.label" class="label">Projects</span>
+        <h2 data-i18n="work.h2">Selected projects.</h2>
       </div>
-      <p>A few things I've built in class and at work.</p>
+      <p data-i18n="work.p">A few things I've built in class and at work.</p>
     </div>
 
     <div class="work">
@@ -455,13 +467,13 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
         <div class="visual framed" style="--tint: var(--copper)">
           <div class="window">
             <div class="chrome"><i></i><i></i><i></i><em>CineNiche</em></div>
-            <img src="cineniche.jpg" alt="CineNiche app showing personalized drama recommendations, a genre filter, and a grid of movie posters" loading="lazy" style="object-position: center 40%">
+            <img data-i18n-alt="p1.alt" src="cineniche.jpg" alt="CineNiche app showing personalized drama recommendations, a genre filter, and a grid of movie posters" loading="lazy" style="object-position: center 40%">
           </div>
         </div>
         <div class="body">
-          <div class="top"><span class="label">Dec 2024 · Full-stack + ML</span></div>
-          <h3>Personalized Movie Streaming Platform</h3>
-          <p class="muted">A full-stack streaming app with secure sign-in and role-based access. I also built its recommendation engine, which suggests movies based on both viewing history and movie details.</p>
+          <div class="top"><span data-i18n="p1.label" class="label">Dec 2024 · Full-stack + ML</span></div>
+          <h3 data-i18n="p1.h3">Personalized Movie Streaming Platform</h3>
+          <p data-i18n="p1.p" class="muted">A full-stack streaming app with secure sign-in and role-based access. I also built its recommendation engine, which suggests movies based on both viewing history and movie details.</p>
           <div class="chip-row"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">.NET 8</span><span class="chip">scikit-learn</span><span class="chip">Azure ML</span></div>
         </div>
       </article>
@@ -470,13 +482,13 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
         <div class="visual framed" style="--tint: var(--caramel)">
           <div class="window">
             <div class="chrome"><i></i><i></i><i></i><em>Turtle Shelter Project</em></div>
-            <img src="turtle-shelter.webp" alt="Turtle Shelter Project home page with the headline Join the Turtle Shelter Project today and buttons to request an event or volunteer" loading="lazy" style="object-position: top center">
+            <img data-i18n-alt="p2.alt" src="turtle-shelter.webp" alt="Turtle Shelter Project home page with the headline Join the Turtle Shelter Project today and buttons to request an event or volunteer" loading="lazy" style="object-position: top center">
           </div>
         </div>
         <div class="body">
-          <div class="top"><span class="label">Apr 2025 · Data + Cloud</span></div>
+          <div class="top"><span data-i18n="p2.label" class="label">Apr 2025 · Data + Cloud</span></div>
           <h3>The Turtle Shelter Project</h3>
-          <p class="muted">A database and web app on AWS that tracks homeless population data, volunteers, and events. I designed the database in under 45 hours and built Tableau dashboards on top of it.</p>
+          <p data-i18n="p2.p" class="muted">A database and web app on AWS that tracks homeless population data, volunteers, and events. I designed the database in under 45 hours and built Tableau dashboards on top of it.</p>
           <div class="chip-row"><span class="chip">PostgreSQL</span><span class="chip">AWS</span><span class="chip">Node.js</span><span class="chip">pandas</span><span class="chip">Tableau</span></div>
         </div>
       </article>
@@ -496,9 +508,9 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
           </div>
         </div>
         <div class="body">
-          <div class="top"><span class="label">Apr 2026 · AI + Data</span></div>
-          <h3>LLM Data Query Agent</h3>
-          <p class="muted">An LLM app that generates and runs data queries. I added sandboxed execution and prompt-injection safeguards to reduce the risk from generated code and untrusted inputs, and used debug tracing to isolate errors.</p>
+          <div class="top"><span data-i18n="p3.label" class="label">Apr 2026 · AI + Data</span></div>
+          <h3 data-i18n="p3.h3">LLM Data Query Agent</h3>
+          <p data-i18n="p3.p" class="muted">An LLM app that generates and runs data queries. I added sandboxed execution and prompt-injection safeguards to reduce the risk from generated code and untrusted inputs, and used debug tracing to isolate errors.</p>
           <div class="chip-row"><span class="chip">Python</span><span class="chip">Gemini API</span><span class="chip">pandas</span></div>
         </div>
       </article>
@@ -517,9 +529,9 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
           </div>
         </div></div>
         <div class="body">
-          <div class="top"><span class="label">2025 · Power BI · At work</span></div>
-          <h3>Global testing insights at Melaleuca</h3>
-          <p class="muted">Power BI dashboards that track test results across 11 global suites. I presented the findings to leadership, who approved 5+ automation projects, and bug resolution got 35% faster.</p>
+          <div class="top"><span data-i18n="p4.label" class="label">2025 · Power BI · At work</span></div>
+          <h3 data-i18n="p4.h3">Global testing insights at Melaleuca</h3>
+          <p data-i18n="p4.p" class="muted">Power BI dashboards that track test results across 11 global suites. I presented the findings to leadership, who approved 5+ automation projects, and bug resolution got 35% faster.</p>
           <div class="chip-row"><span class="chip">Power BI</span><span class="chip">Cypress</span><span class="chip">Selenium</span><span class="chip">Azure DevOps</span></div>
         </div>
       </article>
@@ -529,11 +541,11 @@ footer { margin-top: 72px; border-top: 1px solid var(--line); }
   <!-- ================= CTA ================= -->
   <section class="wrap" id="contact">
     <div class="cta">
-      <span class="label">Contact</span>
-      <h2 style="margin-top:16px">Let's <span class="grad">connect.</span></h2>
-      <p>I'm graduating in December 2026 and looking for full-time roles in software, data, customer success, or technical strategy. I'd love to hear from you.</p>
+      <span data-i18n="cta.label" class="label">Contact</span>
+      <h2 data-i18n="cta.h2" style="margin-top:16px">Let's <span class="grad">connect.</span></h2>
+      <p data-i18n="cta.p">I'm graduating in December 2026 and looking for full-time roles in software, data, customer success, or technical strategy. I'd love to hear from you.</p>
       <div class="cta-row">
-        <div class="mail"><span id="email">gabrielliza012@gmail.com</span><button type="button" class="btn solid" id="copy">Copy email</button></div>
+        <div class="mail"><span id="email">gabrielliza012@gmail.com</span><button type="button" class="btn solid" id="copy" data-i18n="copy">Copy email</button></div>
         <a class="btn" href="https://www.linkedin.com/in/gabriellizam" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
       </div>
     </div>
@@ -585,11 +597,138 @@ const nav = document.getElementById("nav");
 const onScroll = () => nav.classList.toggle("scrolled", scrollY > 8);
 addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
+// English / Spanish. English lives in the HTML; Spanish strings are below.
+// Pick order: ?lang= in the URL, then the visitor's last choice, then their browser language.
+const ES = {
+ "nav.aria": "Secciones",
+ "nav.about": "Sobre mí",
+ "nav.exp": "Experiencia",
+ "nav.lead": "Liderazgo",
+ "nav.work": "Proyectos",
+ "nav.contact": "Contacto",
+ "nav.cta": "¡Conectemos!",
+ "hero.pill": "Disponible para puestos a tiempo completo desde enero de 2027",
+ "hero.h1": "Hola, soy <span class=\"grad\">Gabriel.</span>",
+ "hero.sub": "Soy desarrollador de software en Melaleuca y estudiante de Sistemas de Información en BYU; egreso en diciembre de 2026. Me gusta crear dashboards y automatizaciones que le ahorran tiempo a la gente, y me importan tanto <b>las personas con las que trabajo</b> como el código que escribo.",
+ "hero.view": "Ver mis proyectos",
+ "hero.touch": "Contáctame",
+ "hero.alt": "Retrato de Gabriel Liza",
+ "hero.proof": "Experiencia en",
+ "about.label": "Sobre mí",
+ "about.h2": "Un poco sobre mi trabajo.",
+ "about.p": "He trabajado como analista de negocios, ingeniero de QA y ahora como desarrollador. En cada puesto busqué tareas lentas y manuales, y encontré la forma de automatizarlas.",
+ "now.live": "Ahora",
+ "now.when": "May 2025 – Actualidad",
+ "now.h3": "Desarrollador de Software (Automatización de QA) en Melaleuca: The Wellness Company",
+ "now.p": "Valido la integridad de datos y el comportamiento del sistema en 23 sitios web en producción, y reporto los hallazgos a la gerencia.",
+ "now.w1": "casos de prueba que migré a un framework estándar, con una cobertura que pasó de 5 a 22 mercados e idiomas",
+ "now.w2": "horas de pruebas manuales por lanzamiento, tras reconstruir nuestras suites de regresión",
+ "now.w3": "menos tiempo para resolver errores, tras la aprobación de más de 5 proyectos de automatización que propuse",
+ "stat1.label": "Usuarios atendidos",
+ "stat1.p": "usuarios al año en el sistema de matrícula que probó mi equipo de QA de cuatro integrantes",
+ "stat2.label": "Tiempo ahorrado",
+ "stat2.big": "+20 h",
+ "stat2.p": "ahorradas cada mes al automatizar la facturación de más de 400 docentes",
+ "edu.label": "Educación",
+ "edu.h3": "Bachiller en Sistemas de Información, minor en Matemáticas",
+ "edu.school": "BYU Marriott School of Business · Dic 2026",
+ "edu.course": "Cursos destacados: Bases de Datos, Desarrollo de Aplicaciones Empresariales, Principios de Contabilidad",
+ "edu.chips": "<span class=\"chip\">Promedio de especialidad 3.84</span><span class=\"chip\">Beca ’23 ’24 ’25 ’26</span><span class=\"chip\">Español (nativo)</span><span class=\"chip\">Inglés (fluido)</span><span class=\"chip\">Francés (conversacional)</span>",
+ "lead.label": "Liderazgo",
+ "lead.h3": "Copresidente, Marriott Inclusion &amp; Belonging Society",
+ "lead.p": "Lidero una organización estudiantil que busca que los 2000 alumnos de nuestra escuela de negocios se sientan parte de ella, a través de alianzas corporativas y eventos en el campus.",
+ "rec.label": "Reconocimientos",
+ "rec.h3": "Premio True-Blue",
+ "rec.p": "Otorgado por desempeño laboral y liderazgo sobresalientes.",
+ "rec.h3b": "Caso de estudio de Gestión de Riesgos de EY",
+ "rec.pb": "Completé el caso de estudio de EY sobre evaluación de riesgos y toma de decisiones estratégicas.",
+ "tools.label": "Herramientas",
+ "exp.label": "Experiencia",
+ "exp.h2": "Dónde he trabajado.",
+ "exp.p": "Cada puesto me acercó un poco más a la tecnología y a las decisiones que hay detrás de ella.",
+ "x1.when": "May 2025 – Actualidad",
+ "x1.role": "<h3>Desarrollador de Software (Automatización de QA)</h3><p>Melaleuca · Provo, UT</p>",
+ "x1.what": "Valido la integridad de datos en <b>23 sitios web en producción</b> mediante pruebas de API, backend y UI con Postman y Splunk. Lideré la migración de más de 838 casos de prueba a un framework estándar, reconstruí nuestras suites de regresión para reducir las pruebas manuales de ~49 a 10 horas por lanzamiento y presenté análisis en Power BI que llevaron a la aprobación de más de 5 proyectos de automatización y redujeron en 35% el tiempo de resolución de errores.",
+ "x2.when": "Ene 2024 – May 2025",
+ "x2.role": "<h3>Ingeniero de QA (Estudiante)</h3><p>BYU Continuing Education</p>",
+ "x2.what": "Ejecuté consultas SQL diarias para verificar la consistencia de datos de un sistema de matrícula con <b>más de 150 mil inscripciones al año</b>. También lideré un equipo de cuatro personas que mejoró más de 30 pruebas en Selenium: detectamos 20% más errores y redujimos a la mitad el tiempo de ejecución.",
+ "x3.when": "Set 2023 – Dic 2023",
+ "x3.role": "<h3>Practicante de Consultoría Tecnológica</h3><p>Swimage Inc. · En el campus</p>",
+ "x3.what": "Diseñé la estrategia de pruebas para un software de ciberseguridad usado por clientes como <b>la NASA y el IRS</b>, con más de 100 casos de uso y más de 40 casos de prueba de caja negra. También automaticé el plan de pruebas, lo que ahorró más de 15 horas de trabajo manual y mejoró la confiabilidad en 20%.",
+ "x4.when": "Nov 2022 – Dic 2023",
+ "x4.role": "<h3>Analista de Negocios (Estudiante)</h3><p>BYU Continuing Education (Negocios y RR. HH.)</p>",
+ "x4.what": "Automaticé la facturación de más de 400 docentes con VBA, SQL y Tableau, <b>lo que ahorró más de 20 horas al mes</b>. También coordiné con RR. HH. y Finanzas de 7 áreas para mantener sincronizados PeopleSoft y Orion, e implementé prácticas ágiles que aumentaron en 33% la eficiencia de nuestro flujo de trabajo.",
+ "ls.label": "Liderazgo y voluntariado",
+ "ls.h2": "Más allá del aula.",
+ "ls.p": "Las comunidades de las que he formado parte en BYU y las personas a las que he tenido la oportunidad de servir.",
+ "l1.role": "<h3>Copresidente</h3><p>Marriott Inclusion &amp; Belonging Society</p>",
+ "l1.what": "Lidero el trabajo de la sociedad para que cada estudiante de la Marriott School se sienta parte de la comunidad, a través de alianzas con empresas y eventos abiertos a toda la escuela de negocios.",
+ "l2.role": "<h3>Vicepresidente de Aprendizaje y Desarrollo</h3><p>Marriott Inclusion &amp; Belonging Society</p>",
+ "l2.what": "Organicé talleres educativos con empresas multinacionales y docentes, y ayudé a crear conciencia sobre la importancia de la pertenencia en toda la escuela de negocios.",
+ "l3.role": "<h3>Tesorero</h3><p>Catholic Newman Club en BYU</p>",
+ "l3.what": "Gestioné el presupuesto y las finanzas del club, y ayudé a que los estudiantes católicos encontraran una comunidad en el campus.",
+ "l4.role": "<h3>Representante de Estudiantes de Otras Religiones</h3><p>Consejo Consultivo Estudiantil de BYU</p>",
+ "l4.what": "Realicé 5 encuestas en todo el campus y lideré una campaña para dar mayor visibilidad a los estudiantes de grupos minoritarios, que fue reconocida por el decano.",
+ "l5.role": "<h3>Profesor voluntario</h3><p>Clases para niños recién llegados a EE. UU.</p>",
+ "l5.what": "Enseñé a niños que acababan de mudarse a Estados Unidos y aún estaban aprendiendo inglés. Los ayudé a ponerse al día en sus materias escolares mientras mejoraban su inglés.",
+ "work.label": "Proyectos",
+ "work.h2": "Proyectos destacados.",
+ "work.p": "Algunas cosas que he creado en clase y en el trabajo.",
+ "p1.alt": "Aplicación CineNiche con recomendaciones personalizadas de dramas, un filtro por género y una cuadrícula de pósteres",
+ "p1.label": "Dic 2024 · Full-stack + ML",
+ "p1.h3": "Plataforma de streaming personalizada",
+ "p1.p": "Una aplicación de streaming full-stack con inicio de sesión seguro y control de acceso por roles. También desarrollé su motor de recomendaciones, que sugiere películas según el historial de visualización y las características de cada película.",
+ "p2.alt": "Página de inicio de The Turtle Shelter Project, con botones para solicitar un evento o ser voluntario",
+ "p2.label": "Abr 2025 · Datos + Nube",
+ "p2.p": "Una base de datos y aplicación web en AWS que registra datos de personas en situación de calle, voluntarios y eventos. Diseñé la base de datos en menos de 45 horas y creé dashboards en Tableau a partir de ella.",
+ "p3.label": "Abr 2026 · IA + Datos",
+ "p3.h3": "Agente de consultas de datos con LLM",
+ "p3.p": "Una aplicación con LLM que genera y ejecuta consultas de datos. Agregué ejecución en sandbox y protecciones contra prompt injection para reducir los riesgos del código generado y de las entradas no confiables, y usé trazas de depuración para aislar errores.",
+ "p4.label": "2025 · Power BI · En el trabajo",
+ "p4.h3": "Análisis global de pruebas en Melaleuca",
+ "p4.p": "Dashboards en Power BI que monitorean los resultados de pruebas de 11 suites globales. Presenté los hallazgos a la gerencia, que aprobó más de 5 proyectos de automatización, y el tiempo de resolución de errores se redujo en 35%.",
+ "cta.label": "Contacto",
+ "cta.h2": "<span class=\"grad\">Conectemos.</span>",
+ "cta.p": "Egreso en diciembre de 2026 y busco puestos a tiempo completo en software, datos, customer success o estrategia tecnológica. Me encantaría conversar contigo.",
+ "copy": "Copiar correo",
+ "stat1.big": "+150 mil"
+};
+const UI = {
+  en: { title: document.title, desc: document.querySelector('meta[name="description"]').content, copy: "Copy email", copied: "Copied", press: "Press Ctrl+C" },
+  es: {"title": "Gabriel Liza | Portafolio", "desc": "Gabriel Liza: software, datos e IA en Melaleuca y BYU. Disponible para puestos a tiempo completo desde enero de 2027.", "copy": "Copiar correo", "copied": "¡Copiado!", "press": "Presiona Ctrl+C"},
+};
+const EN = {};
+document.querySelectorAll("[data-i18n]").forEach((el) => (EN[el.dataset.i18n] = el.innerHTML));
+document.querySelectorAll("[data-i18n-alt]").forEach((el) => (EN[el.dataset.i18nAlt] = el.alt));
+document.querySelectorAll("[data-i18n-aria]").forEach((el) => (EN[el.dataset.i18nAria] = el.getAttribute("aria-label")));
+let lang = "en";
+function setLang(l, save) {
+  lang = l === "es" ? "es" : "en";
+  const T = lang === "es" ? ES : EN;
+  document.querySelectorAll("[data-i18n]").forEach((el) => (el.innerHTML = T[el.dataset.i18n]));
+  document.querySelectorAll("[data-i18n-alt]").forEach((el) => (el.alt = T[el.dataset.i18nAlt]));
+  document.querySelectorAll("[data-i18n-aria]").forEach((el) => el.setAttribute("aria-label", T[el.dataset.i18nAria]));
+  document.documentElement.lang = lang;
+  document.title = UI[lang].title;
+  document.querySelector('meta[name="description"]').content = UI[lang].desc;
+  document.querySelectorAll(".lang button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.lang === lang));
+  if (save) {
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+    const u = new URL(location.href);
+    if (lang === "es") u.searchParams.set("lang", "es"); else u.searchParams.delete("lang");
+    history.replaceState(null, "", u);
+  }
+}
+document.querySelectorAll(".lang button").forEach((b) => b.addEventListener("click", () => setLang(b.dataset.lang, true)));
+let saved = null;
+try { saved = localStorage.getItem("lang"); } catch (e) {}
+setLang(new URLSearchParams(location.search).get("lang") || saved || ((navigator.language || "").toLowerCase().startsWith("es") ? "es" : "en"), false);
+
 // Copy email
 const btn = document.getElementById("copy");
 btn.addEventListener("click", () => {
-  const ok = () => { btn.textContent = "Copied"; setTimeout(() => (btn.textContent = "Copy email"), 1800); };
-  const sel = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById("email")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Press Ctrl+C"; };
+  const ok = () => { btn.textContent = UI[lang].copied; setTimeout(() => (btn.textContent = UI[lang].copy), 1800); };
+  const sel = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById("email")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = UI[lang].press; };
   try { navigator.clipboard.writeText("gabrielliza012@gmail.com").then(ok, sel); } catch (e) { sel(); }
 });
 
